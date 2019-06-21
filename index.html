@@ -30,22 +30,50 @@
     <a-assets>
       <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
       
-      <img id="jelly-thumb" src="Picture6 Helicopter1.jpg">
-      <img id="Helicopter" src="Picture6 Helicopter 1.jpg">
+      <img id="Helicopter" src="targets/Helicopter.jpg">
+     
       
-      <img id="SWAT" src="Picture2 SWAT.jpg">
+      <img id="Academy" src="targets/Academy.jpg">
       
-      <img id="Charger" src="Picture1 Charger.jpg">
+      <img id="Charger" src="targets/Charger.jpg">
       
-      <img id="Motor" src="Picture3 Motor.jpg">
+      <img id="Motor" src="targets/Motor.jpg">
       <video
-        id="jelly-video"
-        autoplay
+        id="Motors_Vid"
+        autoplay= true
         muted
         crossorigin="anonymous"
         loop="true"
         src="Motors.mp4">
       </video>
+
+      <video
+        id="Academy_Vid"
+        autoplay= true
+        muted
+        crossorigin="anonymous"
+        loop="true"
+        src="Academy_Training.mp4">
+      </video>
+
+        <video
+        id="Helicopter_Vid"
+        autoplay= true
+        muted
+        crossorigin="anonymous"
+        loop="true"
+        src="WhyWearBad.mp4">
+      </video>
+
+       <video
+        id="Road_Life_Vid"
+        autoplay= true
+        muted
+        crossorigin="anonymous"
+        loop="true"
+        src="Road_Life.mp4">
+      </video>
+
     </a-assets>
 
     <a-camera
@@ -64,25 +92,25 @@
     
     <a-entity
       xrextras-named-image-target="name: Helicopter"
-      xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
+      xrextras-play-video="video: #Helicopter_Vid; thumb: #Helicopter; canstop: true"
       geometry="primitive: plane; height: 1; width: 0.79;">
     </a-entity>
     
     <a-entity
-      xrextras-named-image-target="name: SWAT"
-      xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
+      xrextras-named-image-target="name: Motors"
+      xrextras-play-video="video: #Motors_Vid; thumb: #Motor; canstop: true"
       geometry="primitive: plane; height: 1; width: 0.79;">
     </a-entity>
     
-       <a-entity
+    <a-entity
       xrextras-named-image-target="name: Charger"
-      xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
+      xrextras-play-video="video: #Road_Life_Vid; thumb: #Charger; canstop: true"
       geometry="primitive: plane; height: 1; width: 0.79;">
     </a-entity>
 
-       <a-entity
-      xrextras-named-image-target="name: Motor"
-      xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
+    <a-entity
+      xrextras-named-image-target="name: Academy"
+      xrextras-play-video="video: #Academy_Vid; thumb: #Academy; canstop: true"
       geometry="primitive: plane; height: 1; width: 0.79;">
     </a-entity>
     
