@@ -17,47 +17,6 @@
   <!-- 8thWall Web - Replace the app key here with your own app key -->
   <script src="//apps.8thwall.com/xrweb?appKey=4FJLYhPesbCFf23KoRf4j49vLt5SXAJs0XirXcsMDKnbvChSbL9FKNhqsJSbQ9benLpsir"></script>
 
-      <script>
-      // This component gives the invisible hider walls the property they need
-      AFRAME.registerComponent('hider-material', {
-        init: function() {
-          const mesh = this.el.getObject3D('mesh')
-          mesh.material.colorWrite = false
-        },
-      })
-      // This component hides and shows certain elements as the camera moves
-      AFRAME.registerComponent('portal', {
-        schema: {
-          width: {default: 4},
-          height: {default: 6},
-          depth: {default: 1},
-        },
-        init: function(){
-          this.camera = document.getElementById('camera')
-          this.contents = document.getElementById('portal-contents')
-          this.walls = document.getElementById('hider-walls')
-          this.portalWall = document.getElementById('portal-wall')
-          this.portalWorld = document.getElementById('portal-world')
-          this.isInPortalSpace = false
-          this.wasOutside = true
-        },
-        tick: function() {
-          const position = this.camera.object3D.position
-          const isOutside = position.z  > this.data.depth / 2
-          const withinPortalBounds =
-            position.y < this.data.height && Math.abs(position.x) < this.data.width / 2
-          if (this.wasOutside != isOutside && withinPortalBounds) {
-            this.isInPortalSpace = !isOutside
-          }
-          this.contents.object3D.visible = this.isInPortalSpace || isOutside
-          this.walls.object3D.visible = !this.isInPortalSpace && isOutside
-          this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
-          this.portalWorld.object3D.visible = this.isInPortalSpace
-          this.wasOutside = isOutside
-        }
-      })
-    </script>
-
 
 
 </head>
@@ -66,7 +25,6 @@
 
   <a-scene
     xrweb="disableWorldTracking: true"
-    portal
     xrextras-gesture-detector
     xrextras-almost-there
     xrextras-loading
@@ -75,7 +33,7 @@
     <a-assets>
       <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
       
-      <a-asset-item id="unicornModel" src="unicorn.glb"></a-asset-item>
+      <a-asset-item id="jelly-glb" src="jellyfish-model.glb"></a-asset-item>
 
       <img id="Helicopter" src="targets/Helicopter.jpg">
      
@@ -112,14 +70,7 @@
         src="WhyWearBad.mp4">
       </video>
 
-       <video
-        id="Road_Life_Vid"
-        autoplay= true
-        muted
-        crossorigin="anonymous"
-        loop="true"
-        src="Road_Life.mp4">
-      </video>
+      
 
     </a-assets>
 
@@ -134,89 +85,13 @@
     <a-light type="ambient" intensity="1"></a-light>
 
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
-   <a-entity xrextras-named-image-target="name: Charger">
+   
+
+    <a-entity xrextras-named-image-target="name: Charger">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"></a-entity>
+    </a-entity>
     
-
-    
-
-
-      
-      <a-box
-        scale="1 6 1"
-        position="-2.5 3 0"
-        color="cyan"></a-box>
-      <a-box
-        scale="1 6 1"
-        position="2.5 3 0"
-        color="cyan"></a-box>
-      <a-box
-        scale="6 1 1"
-        position="0 6.5 0"
-        color="cyan"></a-box>
-
-      <!-- Hider walls -->
-      <a-entity id="hider-walls">
-        <a-box
-          scale="6 100 1"
-          position="0 57 0"
-          hider-material></a-box>
-        <a-box
-          scale="94 100 1"
-          position="-50 50 0"
-          hider-material></a-box>
-        <a-box
-          scale="94 100 1"
-          position="50 50 0"
-          hider-material></a-box>
-        <a-box
-          scale="200 100 1"
-          position="0 50 200"
-          hider-material></a-box>
-        <a-box
-          scale="200 1 201"
-          position="0 100 100"
-          hider-material></a-box>
-        <a-box
-          scale="200 1 199"
-          position="0 -0.5 100"
-          hider-material></a-box>
-        <a-box
-          scale="1 100 200"
-          position="-100 50 100"
-          hider-material></a-box>
-        <a-box
-          scale="1 100 200"
-          position="100 50 100"
-          hider-material></a-box>
-      </a-entity>
-
-      <a-entity id="portal-wall">
-        <a-plane
-          scale="4 6 1"
-          rotation="180 0 0"
-          position="0 3 0.5"
-          hider-material></a-plane>
-      </a-entity>
-
-      <a-entity id="portal-contents">
-        <a-entity
-          scale="0.3 0.3 0.3"
-          position="0 0 -7"
-          gltf-model="#unicornModel"></a-entity>
-        <a-sky color="#6EBAA7"></a-sky>
-        <a-box
-          scale="200 1 100"
-          position="0 -0.5 -49.5"
-          color="blue"></a-box>
-      </a-entity>
-
-      <a-entity id="portal-world">
-        <a-box
-          scale="200 1 100"
-          position="0 -0.5 49.5"
-          color="blue"></a-box>
-      </a-entity>
-   </a-entity>
     <a-entity
       xrextras-named-image-target="name: Helicopter"
       xrextras-play-video="video: #Helicopter_Vid; thumb: #Helicopter; canstop: true"
@@ -229,15 +104,12 @@
       geometry="primitive: plane; height: 1; width: 1;">
     </a-entity>
     
- 
 
     <a-entity
       xrextras-named-image-target="name: Academy"
       xrextras-play-video="video: #Academy_Vid; thumb: #Academy; canstop: true"
       geometry="primitive: plane; height: 1; width: 1;">
     </a-entity>
-
-</a-entity>
     
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
     
