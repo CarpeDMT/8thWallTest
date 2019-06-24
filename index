@@ -70,14 +70,7 @@
         src="WhyWearBad.mp4">
       </video>
 
-       <video
-        id="Road_Life_Vid"
-        autoplay= true
-        muted
-        crossorigin="anonymous"
-        loop="true"
-        src="Road_Life.mp4">
-      </video>
+      
 
     </a-assets>
 
