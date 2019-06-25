@@ -35,6 +35,10 @@
       
       <a-asset-item id="jelly-glb" src="Storm_Cloud.glb"></a-asset-item>
 
+      <a-asset-item id="palm_trees" src="Palm_Trees.glb"></a-asset-item>
+
+
+
       <img id="Helicopter" src="targets/Helicopter.jpg">
      
       
@@ -43,6 +47,7 @@
       <img id="Charger" src="targets/Charger.jpg">
       
       <img id="Motor" src="targets/Motors.jpg">
+      
       <video
         id="Motors_Vid"
         autoplay= true
@@ -52,14 +57,7 @@
         src="Motors.mp4">
       </video>
 
-      <video
-        id="Academy_Vid"
-        autoplay= true
-        muted
-        crossorigin="anonymous"
-        loop="true"
-        src="Academy_Training.mp4">
-      </video>
+     
 
         <video
         id="Helicopter_Vid"
@@ -92,7 +90,7 @@
       >
       <!-- Add a child entity that can be rotated independently of the image target. -->
       <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"
-      position = "0 0 0"
+      position = "0.4 0 0"
       rotation = "90 0 0"
       scale = "4 4 4"></a-entity>
     </a-entity>
@@ -110,10 +108,14 @@
     </a-entity>
     
 
-    <a-entity
-      xrextras-named-image-target="name: Academy"
-      xrextras-play-video="video: #Academy_Vid; thumb: #Academy; canstop: true"
-      geometry="primitive: plane; height: 0.45; width: 0.8;">
+    <a-entity xrextras-named-image-target="name: Academy"
+    position = "0 0 0"
+      >
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity xrextras-one-finger-rotate gltf-model="#palm_trees"
+      position = "-0.4 0 0"
+      rotation = "90 0 0"
+      scale = "4 4 4"></a-entity>
     </a-entity>
     
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
