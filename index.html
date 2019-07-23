@@ -60,7 +60,7 @@
       })
 
     </script>
-  
+
   </head>
   <body>
     <a-scene  xrweb="disableWorldTracking: true"
@@ -144,12 +144,12 @@
     </a-entity>
     
     <a-entity
-      xrextras-named-image-target="name: Helicopter"
+      xrextras-named-image-target="name: Charger"
       position= "0 .5 0">
-      <a-entity
+      <a-entity> 
 
 
-            <!-- Doorway -->
+           
       <a-box
         scale="1 6 1"
         position="-2.5 3 0"
@@ -228,46 +228,8 @@
     </a-entity>
 
 
-      <a-entity position="0 0 0">
-        
-        
-        <a-entity 
-          geometry="primitive: sphere; radius: 1;"
-          material="color: #000;"
-          geojson="
-            src: #json-world-110m; 
-            topologyObject: countries;
-            lineWidth: 1 ;"
-          ></a-entity>
-
-
-        <a-entity 
-          geometry="primitive: sphere; radius: 1;"
-          material="color: #F0A;"
-          geojson="src: #json-places; featureKey: name; pointScale: 0.0000001; pointAs: bar; pointSizeFeature: pop_min; lineWidth: 4;
-          pointScaling: linear;"
-          ></a-entity>
-      
-
-
-          <a-entity 
-          geometry="primitive: sphere; radius: 1;"
-          material="color: #000;"
-          geojson="
-            src: #json-geographiclines; 
-            featureKey: name;
-            lineWidth: 1 ;"
-          ></a-entity>
-        </a-entity>
-      
-
-    </a-entity>
     
-    <a-entity
-      xrextras-named-image-target="name: Charger"
-      xrextras-play-video="video: #Motors_Vid; thumb: #Herald; canstop: true"
-      geometry="primitive: plane; height: .8; width: 1 ;">
-    </a-entity>
+
     
 
     <a-entity xrextras-named-image-target="name: Academy"
