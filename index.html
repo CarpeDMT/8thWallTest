@@ -143,14 +143,14 @@
       scale = "3.5 3.5 3.5"></a-entity>
     </a-entity>
     
-    <a-entity xrextras-named-image-target="name: Charger" position="0.44342 0.0415 0" visible="" scale="0.014 0.014 0.014" rotation="0 0 -90">
+<a-entity xrextras-named-image-target="name: Charger" position="0.44342 0.0415 0" visible="" scale="0.014 0.014 0.014" rotation="0 0 -90">
       <a-entity> 
 
 
            
       <a-box scale="1 6 1" position="-2.5 3 0" color="cyan" material="" geometry=""></a-box>
       <a-box scale="1 6 1" position="2.5 3 0" color="cyan" material="" geometry=""></a-box>
-      <a-box scale="6 1 1" position="0 6.5 0" color="cyan" material="" geometry=""></a-box>
+      <a-box scale="6 1 1" position="0 6.5 0" color="cyan" material="" geometry=""></a-box><a-box scale="6 1 1" position="0 0.10967 0" color="cyan" material="" geometry=""></a-box>
 
       <!-- Hider walls -->
       <a-entity id="hider-walls">
@@ -159,7 +159,7 @@
         <a-box scale="94 100 1" position="50 50 0" hider-material="" material="" geometry=""></a-box>
         <a-box scale="200 100 1" position="0 50 200" hider-material="" material="" geometry=""></a-box>
         <a-box scale="200 1 201" position="0 100 100" hider-material="" material="" geometry=""></a-box>
-        <a-box scale="200 1 199" position="0 -0.5 100" hider-material="" material="" geometry=""></a-box>
+        <a-box scale="200 2.47777 199" position="0 -1.20797 100" hider-material="" material="" geometry=""></a-box>
         <a-box scale="1 100 200" position="-100 50 100" hider-material="" material="" geometry=""></a-box>
         <a-box scale="1 100 200" position="100 50 100" hider-material="" material="" geometry=""></a-box>
       </a-entity>
@@ -169,9 +169,9 @@
       </a-entity>
 
       <a-entity id="portal-contents">
-        <a-entity scale="0.3 0.3 0.3" position="0 0 -7" gltf-model="Palm_Trees.glb"></a-entity>
+        <a-entity scale="0.49033 0.62528 0.49033" position="0 0.49753 -3.86633" gltf-model="Palm_Trees.glb"></a-entity>
         
-        <a-box scale="200 1 100" position="0 -0.5 -49.5" color="blue" material="" geometry=""></a-box><a-box scale="200 1 100" position="0 17.18519 -18.76099" color="blue" material="color: #e3f5f3" geometry=""></a-box>
+        <a-box scale="200 1 100" position="0 17.10993 -7.69965" color="blue" material="color: #e3f5f3" geometry=""></a-box>
       </a-entity>
 
       <a-entity id="portal-world">
@@ -193,18 +193,7 @@
     
 
 
-      <a-entity position="0 1.6 -2">
-        
-        
-        <a-entity geometry="primitive: sphere" material="color: #000" geojson="src: assets/world-110m.v1.json; topologyObject: countries"></a-entity>
-
-
-        <a-entity geometry="primitive: sphere" material="color: #F0A" geojson="src: assets/ne_110m_populated_places_simple.geojson; featureKey: name; pointScale: 1e-7; pointAs: bar; pointSizeFeature: pop_min; lineWidth: 4"></a-entity>
       
-
-
-          <a-entity geometry="primitive: sphere" material="color: #000" geojson="src: assets/geographiclines.geojson; featureKey: name"></a-entity>
-        </a-entity>
       
 
 
