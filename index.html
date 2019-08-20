@@ -5,9 +5,13 @@
     <title>8th Wall Web: three.js Image Targets</title>
     <link rel="stylesheet" type="text/css" href="index.css">
 
-    <!-- THREE.js must be supplied -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/93/three.min.js"></script>
-
+  
+  <!--Three.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/98/three.min.js"></script>
+  <!-- Orbit Controls -->
+  <script src="lib/OrbitControls.js"></script>
+  <!--DepthKit.js-->
+  <script src="../build/depthkit.js"></script>
     <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
          See github.com/8thwall/web/xrextras -->
     <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
@@ -17,10 +21,123 @@
 
     <!-- client code -->
     <script src="index.js"></script>
+
+    <style>
+    body {
+      background: #000;
+      color: #fff;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      font-family: georgia;
+      text-align: center;
+    }
+
+    a {
+      color: skyblue;
+      text-decoration: none
+    }
+
+    #info {
+      position: absolute;
+      width: 100%;
+    }
+    #depthkit-video{
+      position:absolute;
+      top: 0; left: 0;
+      width: 20%;
+    }
+  </style>
   </head>
 
   <body>
     <!-- The AR canvas -->
     <canvas id="camerafeed"></canvas>
+
+  <!--Three.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/98/three.min.js"></script>
+  <!-- Orbit Controls -->
+  <script src="lib/OrbitControls.js"></script>
+  <!--DepthKit.js-->
+  <script src="../build/depthkit.js"></script>
+
+  <div id="info">
+    <a href="http://depthkit.tv" target="_blank" rel="noopener">DepthKit.js</a> - Simple example using Three.js<br/> Written
+    by <a href="http://orfleisher.com">juniorxsound</a>
+  </div>
+
+  <script>
+  
+    //Some general Three.js components
+    var renderer,
+    scene,
+    camera,
+    controls;
+
+    //DepthKit character
+    var character;
+
+    init();
+
+    function init() {
+
+      //Setup renderer
+      renderer = new THREE.WebGLRenderer();
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.body.appendChild( renderer.domElement );
+
+      // Setup scene
+      scene = new THREE.Scene();
+
+      // Setup camera
+      camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, .01, 100 );
+      camera.position.set( 0, 2, 3 );
+
+      // Setup controls
+      controls = new THREE.OrbitControls( camera );
+
+      // A grid helper as a floor reference
+      var gridHelper = new THREE.GridHelper( 10, 10 );
+      scene.add(gridHelper);
+
+      //DepthKit(mesh/wire/points rendering, path to txt, path to video)
+      character = new DepthKit( 'mesh', '../assets/Chae/Chae_Demo_Upres.txt', '../assets/Chae/Chae_Demo_Upres.mp4' );
+
+      //Position and rotation adjustments
+      character.scale.set( 0.001, 0.001, 0.001 );
+      character.position.set( -0.75, 1.1, 1.85 );
+
+      //Depthkit methods
+      character.depthkit.setLoop( true );
+      character.depthkit.play();
+
+      //Add the character to the scene
+      scene.add(character);
+
+      window.addEventListener( 'resize', onWindowResize, false );
+
+      render();
+
+    }
+
+    function render() {
+
+      requestAnimationFrame( render );
+
+      renderer.render( scene, camera );
+
+    }
+
+    function onWindowResize() {
+
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+
+    }
+
+  </script>
+
   </body>
 </html>
