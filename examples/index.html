@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>A-Frame DepthKit</title>
+    
+         <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+    <script src="//apps.8thwall.com/xrweb?appKey=4FJLYhPesbCFf23KoRf4j49vLt5SXAJs0XirXcsMDKnbvChSbL9FKNhqsJSbQ9benLpsir"></script>
+    <!-- A-Frame CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+
+    <!-- Relative bundle name -->
+    <script src="dist/aframe.depthkit.js"></script>
+
+  </head>
+  <body>
+
+
+    <!-- Example A-Frame scene -->
+    <a-scene  xrweb="disableWorldTracking: true"
+      xrextras-gesture-detector
+      xrextras-almost-there
+      xrextras-loading
+      xrextras-runtime-error>
+
+        <a-camera
+          position="0 4 10"
+          raycaster="objects: .cantap"
+         cursor="fuse: false; rayOrigin: mouse;">
+        </a-camera>
+
+        <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
+        <a-light type="ambient" intensity="1"></a-light>
+
+        <!-- THIS IS THE PORTAL-->
+        <a-entity xrextras-named-image-target="name: chargerlisa" visible="">
+            <a-entity position="0 -0.42 0" rotation="" scale="0.18 0.18 0.18">
+
+           
+              
+
+      <!-- Example A-Frame DepthKit component initalization -->
+      <a-entity depthkit="type: wire;
+                          metaPath: ../ext/DepthKit/assets/Chae/Chae_Demo_Upres.txt;
+                          videoPath: ../ext/DepthKit/assets/Chae/Chae_Demo_Upres.mp4;
+                          autoplay: true;">
+      </a-entity>
+       <a-entity id="MuralStuff">
+                <a-box scale="200 1 100" position="0 -0.5 49.5" color="blue" material="" geometry="" visible="false"></a-box>
+              </a-entity>
+
+    </a-scene>
+
+  </body>
+</html>
