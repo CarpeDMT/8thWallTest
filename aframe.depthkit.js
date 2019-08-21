@@ -57,7 +57,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         } }, { key: "setLineWidth", value: function value(e) {
           this.material.wireframe ? this.material.wireframeLinewidth = e : console.warn("Can not set the line width because the current character is not set to render wireframe");
         } }, { key: "play", value: function value() {
-          this.video.isPlaying ? console.warn("Can not play because the character is already playing") : this.video.play();
+          this.video.isPlaying ? console.warn("Can not play because the character is already playing") : this.video.load(); fetchVideoAndPlay();
         } }, { key: "stop", value: function value() {
           this.video.currentTime = 0, this.video.pause();
         } }, { key: "pause", value: function value() {
