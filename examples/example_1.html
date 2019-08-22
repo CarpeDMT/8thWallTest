@@ -5,8 +5,11 @@
     <title>Volu Vid Aframe Component Demo</title>
     <meta name="description" content="Volu Vid Aframe Component Demo">
     
+    <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
+     <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+      <script src="//apps.8thwall.com/xrweb?appKey=4FJLYhPesbCFf23KoRf4j49vLt5SXAJs0XirXcsMDKnbvChSbL9FKNhqsJSbQ9benLpsir"></script>
     <!-- MUST include these two shaders. Seems easiest to leave them in the HTML for now -->
-    
+    4FJLYhPesbCFf23KoRf4j49vLt5SXAJs0XirXcsMDKnbvChSbL9FKNhqsJSbQ9benLpsir
     <script id="vs" type="x-shader/x-vertex">
       vec3 rgb2hsl( vec3 color ) {
         float h = 0.0;
@@ -131,14 +134,21 @@
                   text="color: white; align: center; value: [ Use WASD to navigate ] ; width: 4; ">
 	  </a-entity>
 
-      <a-entity camera look-controls wasd-controls="fly:true;" position="0 2 4"> </a-entity>
+    <a-camera
+      position="0 4 10"
+      raycaster="objects: .cantap"
+      cursor="fuse: false; rayOrigin: mouse;">
+    </a-camera>
 
-      <a-sky src="assets/sky.jpg"></a-sky>
+    <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
 
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-box position="-1 0.5 .3" rotation="0 45 0" width="1.5" height="1.5" depth="1.5" color="#4CC3D9"></a-box>
-      <a-cylinder position=".25 0.75 3.7"  radius="0.125" height="4.5" color="#FFC65D"></a-cylinder>
-      <a-cylinder position="0 0 0" radius="12" height=".1" rotation="0 0 0"  color="#7BC8A4"></a-cylinder>
+    <a-light type="ambient" intensity="1"></a-light>
+
+    <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+    <a-entity
+      xrextras-named-image-target="name: chargerlisa>
+    
+
 
       <a-entity rgbd-video="
             name:video;
@@ -150,9 +160,9 @@
             depthPrincipalPointY: 209.3957977294922;
             farClip: 1200;
             nearClip: 0;
-            " position="0 .3 0" scale="1 1 1" rotation="0 0 -90"> </a-entity>
+            " position="0 .3 0" scale="1 1 1" rotation="0 0 -90"> 
+</a-entity></a-entity>
 	</a-scene>
-
 
 
 
